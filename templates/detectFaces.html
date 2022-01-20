@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Simple House - Contact Page</title>
+    <!-- <script src="../static/js/index.js" defer></script> -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
+    <link href="../static/css/all.min.css" rel="stylesheet" />
+	<link href="../static/css/templatemo-style.css" rel="stylesheet" />
+</head>
+<!--
+
+Simple House
+
+https://templatemo.com/tm-539-simple-house
+
+-->
+<body> 
+
+	<div class="container">
+	<!-- Top box -->
+		<!-- Logo & Site Name -->
+		<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="../static/img/simple-house-01.jpg">
+				<div class="tm-header">
+					<div class="row tm-header-inner">
+						<div class="col-md-6 col-12">
+							<img src="../static/img/simple-house-logo.png" alt="Logo" class="tm-site-logo" /> 
+							<div class="tm-site-text-box">
+								<h1 class="tm-site-title">Detect Faces</h1>
+								<h6 class="tm-site-description">...</h6>	
+							</div>
+						</div>
+						<nav class="col-md-8 col-12 tm-nav">
+							<ul class="tm-nav-ul">
+								<li class="tm-nav-li"><a href="index.html" class="tm-nav-link active">Home</a></li>
+								<li class="tm-nav-li"><a href="logs.html" class="tm-nav-link">Logs</a></li>
+							
+							</ul>
+						</nav>	
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<main>
+			<header class="row tm-welcome-section">
+				<h2 class="col-12 text-center tm-section-title">Detect Faces</h2>
+				<!--<p class="col-12 text-center">Welcome Detect Faces <a rel="nofollow" href="https://www.ltcclock.com/downloads/simple-contact-form/" target="_blank">link </a> </p>-->
+			</header>
+<style>
+.fluid-img {
+    margin: 60px auto;
+}
+
+@media( min-width: 768px ){
+        .fluid-img {
+            max-width: 768px;
+        }
+}
+@media screen and (min-width: 768px) {
+        .fluid-img {
+            padding-left: 0;
+            padding-right: 0;
+        }
+}
+</style>
+				<!--<form id="form">
+				<button class="btn btn-primary " name="submit" type="submit">
+					Detect
+					</button>
+				</form>-->
+
+						
+
+
+
+					<div class="col-lg-12 ">
+			              <div >
+			                <div  class="col-lg-4 templatemo-item-col all soon">
+			                  <div class="meeting-item ">
+			                    <div class="thumb">
+
+			                      <div  class="price">
+			                        <span></span><br>
+
+			                        
+
+			                      </div>
+
+
+			                    </div> 
+
+			                  </div>
+
+			                </div>
+
+			                <div class="container row fluid-img">
+							  <div class="row">
+							    <div class="span4"></div>
+							    <div class="span4"><img class="mx-auto d-block" width="800px" height="500px" src="{{ url_for('image_feed_original') }}" 
+
+
+			                alt=""/></div>
+							    <div class="span4"></div>
+							  </div>
+							
+							</div>
+			                
+			              </div>
+			            </div>
+
+
+			            <div style="text-align:center;" class="form-group tm-d-flex btn-lg ">
+							<form id="form">
+					          <button style="width: 40%;" type="submit" name="submit" class="tm-btn tm-btn-success tm-btn-right">
+					            Detect Faces
+					          </button>
+					         </form>
+					     </div>
+
+
+							
+			<!--
+			<div id="result">
+		
+			</div>-->
+
+			<!-- 1200 and 400 -->
+
+			<!-- <div id="result" style="width:1200px; height:800px;  background-color:#123456; text-align:center;" >
+
+		
+				</div> -->
+
+
+				<div id="result" >
+
+		
+				</div>
+
+
+ 
+
+
+
+
+
+
+
+
+            		
+			
+		</main>
+		<div id=div_picture_right class="item">
+
+		</div>
+
+		<footer class="tm-footer text-center">
+			<p>Copyright &copy; 2021 ITI Fight Detection 
+            
+            <a rel="nofollow" href="https://github.com/MohamedSebaie/Fight_Detection_From_Surveillance_Cameras-PyTorch_Project">Fight Detection GitHub</a></p>
+		</footer>
+	</div>
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/parallax.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			var acc = document.getElementsByClassName("accordion");
+			var i;
+			
+			for (i = 0; i < acc.length; i++) {
+			  acc[i].addEventListener("click", function() {
+			    this.classList.toggle("active");
+			    var panel = this.nextElementSibling;
+			    if (panel.style.maxHeight) {
+			      panel.style.maxHeight = null;
+			    } else {
+			      panel.style.maxHeight = panel.scrollHeight + "px";
+			    }
+			  });
+			}	
+		});
+	</script>
+
+<script>
+
+
+
+
+
+    document.getElementById("form").addEventListener("submit", function(e){
+    e.preventDefault();
+    fetch('http://172.31.14.119:8000/image_feed')
+        .then(function(result){
+            return result.json()
+        })
+        .then(function(data){
+               data.toshow.map(function(item){
+                var el = document.createElement("img")
+                el.src = item.url;
+		var text = el.src; 
+                var result = document.getElementById('result'); // div
+
+				if(item.id == "0")
+				{
+
+					el.style.width = "1000px";
+                	el.style.height = "450px";
+				}
+				else
+				{
+					el.style.width = "250px";
+                	el.style.height = "150px";
+				}
+
+                el.style.border = "3px solid #514F2Ac";
+
+
+                el.classList.add("mx-auto");
+
+                result.appendChild(el);
+                result.setAttribute("style", "width:10%");
+                result.setAttribute("style", "height:20%");
+                result.setAttribute("style", "text-align:center");
+            })
+        })
+})
+
+    </script>
+
+
+
+</body>
+</html>
